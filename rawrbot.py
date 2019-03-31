@@ -1,5 +1,5 @@
 import auth
-import discord
+import discord.py
 
 client = discord.Client();
 
