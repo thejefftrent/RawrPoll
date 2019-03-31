@@ -1,1 +1,1 @@
-discordToken = "NTYyMDIwMTU0MzQ3ODgwNDQ5.XKEtsg.j3TEzyplzPIkEwN3Nz8YGdujffg"
+discordToken = "NTYyMDIwMTU0MzQ3ODgwNDQ5.XKE2zA.ztRlwCykYiY7hqHX4MVSH8mCAgg"

@@ -104,4 +104,4 @@ venv.bak/
 .mypy_cache/
 
 # hidden discord stuff
-auth.json
+auth.py

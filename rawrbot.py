@@ -12,6 +12,6 @@ async def on_message(message):
     if message.author != client.user:
         if message.content.startswith('+hello'):
             await message.channel.send('Hello!')
-        else
-            return
+    else:
+        return
 client.run(discordToken)
