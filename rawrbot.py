@@ -1,5 +1,5 @@
 import auth
-import discord.py
+import discord
 
 client = discord.Client();
 
@@ -11,7 +11,7 @@ async def on_ready():
 async def on_message(message):
     if message.author != client.user:
         if message.content.startswith('+hello'):
-            await client.send_message(message.channel, content = "Hello!")
+            await message.channel.send('Hello! {0.name}'.format(author))
     else:
         return
 client.run(auth.discordToken)
