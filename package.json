@@ -2,7 +2,7 @@
   "name" : "RawrPoll",
   "version" : "0.0.1",
   "descrition" : "Advanced Poll Bot written to be used to make Discord D&D players make decisions, but I mean it's a poll bot so it can do other things I guess also.",
-  "main" : "bot.py",
+  "main" : "rawrbot.py",
   "author" : "Jeff Trent",
   "dependencies" : {}
 }
