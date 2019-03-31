@@ -11,7 +11,7 @@ async def on_ready():
 async def on_message(message):
     if message.author != client.user:
         if message.content.startswith('+hello'):
-            await message.channel.send('Hello!')
+            await client.send_message(message.channel, content = "Hello!")
     else:
         return
 client.run(auth.discordToken)
