@@ -14,4 +14,4 @@ async def on_message(message):
             await message.channel.send('Hello!')
     else:
         return
-client.run(discordToken)
+client.run(auth.discordToken)
