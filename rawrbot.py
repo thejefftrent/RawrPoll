@@ -43,7 +43,7 @@ async def poll(ctx, arg):
 
 @bot.command()
 async def add(ctx, arg):
-    polls[0].add_reaction('{crit}')
+    await polls[0].add_reaction('{crit}')
     pass
 
 @bot.command()
