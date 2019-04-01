@@ -4,19 +4,18 @@ from discord.ext import commands
 
 
 client = discord.Client();
-command = commands.Bot(command_prefix='+');
+bot = commands.Bot(command_prefix='+');
 
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
-    await client.change_presence(status=discord.Status.idle, activity=discord.Game("with the API"))
+    await client.change_presence(status=discord.Status.online, activity=discord.Game("with the API"))
 
 @client.event
 async def on_message(message):
-    if message.author != client.user:
-        pass
+     await bot.process_commands(message)
 
-@command.command()
+@bot.command()
 async def hello(ctx):
     await ctx.send("Hello!")
 
