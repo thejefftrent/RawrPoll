@@ -41,7 +41,7 @@ async def ping(ctx):
 async def poll(ctx, arg = "you didn't put in a title you dingus"):
     embed=discord.Embed(title=arg, color=0xff8040)
     embed.set_author(name="Poll started by " + ctx.message.author.display_name, icon_url=ctx.message.author.avatar_url)
-    embed.set_footer(text="Use (+add 'option' emoji "+ str(len(polls) + 1) +") to add another option and then react to vote.")
+    embed.set_footer(text="Use (+add 'option' emoji "+ str(len(polls)) +") to add another option and then react to vote.")
     polls.append(await ctx.send(embed=embed))
     #print(polls[len(polls)-1].id)
 
@@ -93,7 +93,9 @@ async def end(ctx, id=0):
 
 @bot.command(name="list")
 async def _list(ctx):
-    s = "There are " + str(len(polls)) + " polls right now"
+    s = "There are " + str(len(polls)) + " polls right now\n\ntest"
+    for poll in polls:
+        print(str(poll))
 
     await ctx.send(s)
 
