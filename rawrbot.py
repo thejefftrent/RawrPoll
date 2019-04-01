@@ -38,13 +38,16 @@ async def ping(ctx):
 
 @bot.command()
 async def poll(ctx, arg):
-    polls.append(await ctx.send(arg))
+    embed=discord.Embed(title=arg, color=0xff8040)
+    embed.set_author(name="Poll started by " + ctx.message.author.display_name,, icon_url=ctx.message.author.avatar_url)
+    embed.set_footer(text="Use (+add 'option' emoji) to add another option and then react to vote.")
+    polls.append(await ctx.send(embed=embed))
     print(polls[len(polls)-1].id)
 
 @bot.command()
-async def add(ctx):
-    await polls[0].add_reaction('👍')
-    pass
+async def add(ctx, arg1, arg2, id = 0):
+    embed.add_field(name=👍, value=I want to be the very best, inline=False)
+    await polls[id].add_reaction('👍')
 
 @bot.command()
 async def end(ctx):
