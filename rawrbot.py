@@ -38,7 +38,7 @@ async def ping(ctx):
     await ctx.send("PONG! " + str(bot.latency*1000)[:6] + "ms")
 
 @bot.command()
-async def poll(ctx, arg):
+async def poll(ctx, arg = "you didn't put in a title you dingus"):
     embed=discord.Embed(title=arg, color=0xff8040)
     embed.set_author(name="Poll started by " + ctx.message.author.display_name, icon_url=ctx.message.author.avatar_url)
     embed.set_footer(text="Use (+add 'option' emoji) to add another option and then react to vote.")
@@ -48,14 +48,11 @@ async def poll(ctx, arg):
 @bot.command()
 async def add(ctx, arg1, arg2, id = 0):
     print(arg1 + " " + arg2)
-    for e in bot.emojis:
-        print(e) 
     emoji = get(bot.emojis, name=arg2)
-
     print(emoji)
     embed = polls[id].embeds[0]
     embed.add_field(name=emoji, value=arg1, inline=False)
-    #await polls[id].add_reaction(emoji)
+    await polls[id].add_reaction(emoji)
     #await polls[id].edit(embed=embed)
 
 @bot.command()
