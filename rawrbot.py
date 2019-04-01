@@ -93,13 +93,14 @@ async def end(ctx, id=0):
 
 @bot.command(name="list")
 async def _list(ctx):
-    s = "There are " + len(polls) + " polls right now\n"
+    s = "There are " + str(len(polls)) + " polls right now"
     i = 0
     for poll in polls:
-        #s += str(i) + ": " polls[i].embeds[0].title + "\n"
+        s += str(i) + ": " polls[i].embeds[0].title
+
         print(str(poll)
-        #i += 1
-    #await ctx.send(s)
+        i += 1
+    await ctx.send(s)
 
 ###########################
 ### LETS RUN THIS THING ###
