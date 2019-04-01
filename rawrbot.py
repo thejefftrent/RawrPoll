@@ -48,6 +48,7 @@ async def poll(ctx, arg = "you didn't put in a title you dingus"):
 @bot.command()
 async def add(ctx, arg1, arg2, id = 0):
     # Some sanitization
+    print(arg2)
     e = arg2
     if arg2[0] == ':' and arg2[-1] == ':':
         e = arg2[1:-1]
@@ -64,6 +65,9 @@ async def add(ctx, arg1, arg2, id = 0):
         await polls[id].add_reaction(emoji)
     except discord.NotFound:
         await ctx.send("An error occured. Likely the emoji does not exist or I don't have access to it.")
+        return
+    except discord.HTTPException:
+        await ctx.send("An error occured when I tried adding a reaction. The emoji should NOT be in plain text")
         return
     await polls[id].edit(embed=embed)
 
