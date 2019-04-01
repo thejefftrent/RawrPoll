@@ -1,6 +1,7 @@
 import auth
 import discord
 from discord.ext import commands
+from discord.utils import get
 
 ############
 # INITIATE #
@@ -46,9 +47,11 @@ async def poll(ctx, arg):
 
 @bot.command()
 async def add(ctx, arg1, arg2, id = 0):
+    print(arg1 + " " + arg2)
+    emoji = get(bog.get_all_emojis(), name=arg2)
     embed = polls[id].embeds[0]
-    embed.add_field(name=arg2, value=arg1, inline=False)
-    await polls[id].add_reaction(':crit:')
+    embed.add_field(name=emoji, value=arg1, inline=False)
+    await polls[id].add_reaction(emoji)
 
 @bot.command()
 async def end(ctx):
