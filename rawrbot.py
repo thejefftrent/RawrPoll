@@ -57,12 +57,12 @@ async def add(ctx, arg1, arg2, id = 0):
     if emoji == None:
         emoji = e
 
-    print()
+    print(emoji)
     embed = polls[id].embeds[0]
     embed.add_field(name=str(emoji), value=arg1, inline=False)
     try:
         await polls[id].add_reaction(emoji)
-    except discord.ext.commands.errors.CommandInvokeError:
+    except discord.NotFound:
         await ctx.send("An error occured. Likely the emoji does not exist or I don't have access to it.")
         return
     await polls[id].edit(embed=embed)
