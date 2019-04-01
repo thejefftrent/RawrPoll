@@ -21,6 +21,6 @@ async def test(ctx):
 
 @bot.command()
 async def ping(ctx):
-    await ctx.send("PONG!" + bot.latency + "ms")
+    await ctx.send("PONG! " + str(bot.latency) + " ms")
 
 bot.run(auth.discordToken)
