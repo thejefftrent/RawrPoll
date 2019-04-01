@@ -98,7 +98,7 @@ async def _list(ctx):
     for poll in polls:
         s += str(i) + ": " polls[i].embeds[0].title
 
-        print(str(poll)
+        print(str(poll))
         i += 1
     await ctx.send(s)
 
