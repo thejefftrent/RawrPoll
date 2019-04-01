@@ -62,7 +62,7 @@ async def add(ctx, arg1, arg2, id = 0):
 
     print(emoji)
     embed = polls[id].embeds[0]
-    embed.add_field(name=str(emoji) + " -- " + arg1, value=" ", inline=False)
+    embed.add_field(name="Option " + (len(embed.fields) + 1), value=str(emoji) + " -- " + arg1, inline=False)
     try:
         await polls[id].add_reaction(emoji)
     except discord.NotFound:
