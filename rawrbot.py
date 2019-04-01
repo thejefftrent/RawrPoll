@@ -74,8 +74,22 @@ async def add(ctx, arg1, arg2, id = 0):
     await polls[id].edit(embed=embed)
 
 @bot.command()
-async def end(ctx):
-    pass
+async def end(ctx, id=0):
+    winner = polls[id].reactions[0]
+    winners = list()
+    for reaction in polls[id].reactions:
+        if reaction.count > winner.reaction.count:
+            winner = reaction
+    for reaction in polls[id].reactions:
+        if reaction.count >= winner.count:
+            winners.append(reaction)
+    if len(winners) > 0:
+        pass
+    else:
+        await ctx.send(str(reaction.emoji) + " is the winner!")
+
+    polls.remove(polls[id])
+
 ###########################
 ### LETS RUN THIS THING ###
 ###########################
