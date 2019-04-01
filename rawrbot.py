@@ -14,9 +14,11 @@ async def on_ready():
 @client.event
 async def on_message(message):
     if message.author != client.user:
-        @command.command()
-        async def hello(ctx):
-            await ctx.send("Hello!")
+        pass
+
+@command.command()
+async def hello(ctx):
+    await ctx.send("Hello!")
 
 
 client.run(auth.discordToken)
