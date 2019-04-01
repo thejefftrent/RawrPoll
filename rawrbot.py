@@ -16,7 +16,7 @@ polls = list()
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
-    await bot.change_presence(status=discord.Status.online, activity=discord.Game("Dungeons and Dragons"))
+    await bot.change_presence(status=discord.Status.online, activity=discord.Game("circle game 👌"))
 
 @bot.event
 async def on_message(message):
@@ -62,7 +62,7 @@ async def add(ctx, arg1, arg2, id = 0):
 
     print(emoji)
     embed = polls[id].embeds[0]
-    embed.add_field(name=ctx.message.author.display_name + " wants to try to:", value=str(emoji) + "—" + arg1, inline=False)
+    embed.add_field(name=ctx.message.author.display_name + " is suggesting:", value=str(emoji) + "—" + arg1, inline=False)
     try:
         await polls[id].add_reaction(emoji)
     except discord.NotFound:
