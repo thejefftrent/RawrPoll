@@ -10,7 +10,6 @@ command = commands.Bot(command_prefix='+');
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
     await client.change_presence(status=discord.Status.idle, activity=discord.Game("with the API"))
-    await message.channel.send("I'm here!")
 
 @client.event
 async def on_message(message):
