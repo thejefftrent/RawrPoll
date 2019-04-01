@@ -2,17 +2,14 @@ import auth
 import discord
 from discord.ext import commands
 
-
-#client = discord.Client();
 bot = commands.Bot(command_prefix='+');
 
-#@client.event
+
 @bot.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(bot))
-    await bot.change_presence(status=discord.Status.online, activity=discord.Game("with the API"))
+    await bot.change_presence(status=discord.Status.online, activity=discord.Game("Dungeons and Dragons"))
 
-#@client.event
 @bot.event
 async def on_message(message):
     if not message.author.bot:
@@ -22,5 +19,8 @@ async def on_message(message):
 async def test(ctx):
     await ctx.send("Hello!")
 
+@bot.command()
+async def ping(ctx):
+    await ctx.send("PONG!" + bot.latency() + "ms")
 
 bot.run(auth.discordToken)
