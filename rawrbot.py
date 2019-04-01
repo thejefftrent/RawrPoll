@@ -43,7 +43,7 @@ async def poll(ctx, arg):
 
 @bot.command()
 async def add(ctx):
-    await polls[0].add_reaction(get(bot.get_all_emojis(), name="crit"))
+    await polls[0].add_reaction('👍')
     pass
 
 @bot.command()
