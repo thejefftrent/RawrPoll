@@ -45,6 +45,8 @@ async def poll(ctx, arg = "you didn't put in a title you dingus"):
     polls.append(await ctx.send(embed=embed))
     #print(polls[len(polls)-1].id)
 
+
+#TODO Check to see if emoji already exists
 @bot.command()
 async def add(ctx, arg1, arg2, id = 0):
     # Some sanitization
@@ -59,7 +61,6 @@ async def add(ctx, arg1, arg2, id = 0):
     emoji = get(bot.emojis, name=e)
     if emoji == None:
         emoji = e
-
     print(emoji)
     embed = polls[id].embeds[0]
     embed.add_field(name=ctx.message.author.display_name + " is suggesting:", value=str(emoji) + "—" + arg1, inline=False)
