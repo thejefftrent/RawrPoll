@@ -39,7 +39,7 @@ async def ping(ctx):
 @bot.command()
 async def poll(ctx, arg):
     embed=discord.Embed(title=arg, color=0xff8040)
-    embed.set_author(name="Poll started by " + ctx.message.author.display_name,, icon_url=ctx.message.author.avatar_url)
+    embed.set_author(name="Poll started by " + ctx.message.author.display_name, icon_url=ctx.message.author.avatar_url)
     embed.set_footer(text="Use (+add 'option' emoji) to add another option and then react to vote.")
     polls.append(await ctx.send(embed=embed))
     print(polls[len(polls)-1].id)
