@@ -48,12 +48,15 @@ async def poll(ctx, arg):
 @bot.command()
 async def add(ctx, arg1, arg2, id = 0):
     print(arg1 + " " + arg2)
+    for e in bot.emojis:
+        print(e) 
     emoji = get(bot.emojis, name=arg2)
+
     print(emoji)
     embed = polls[id].embeds[0]
     embed.add_field(name=emoji, value=arg1, inline=False)
-    await polls[id].add_reaction(emoji)
-    await polls[id].edit(embed=embed)
+    #await polls[id].add_reaction(emoji)
+    #await polls[id].edit(embed=embed)
 
 @bot.command()
 async def end(ctx):
