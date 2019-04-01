@@ -16,7 +16,7 @@ async def on_message(message):
      await bot.process_commands(message)
 
 @bot.command()
-async def hello(ctx):
+async def test(ctx):
     await ctx.send("Hello!")
 
 
