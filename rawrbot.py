@@ -96,7 +96,8 @@ async def _list(ctx):
     s = "There are " + len(polls) + " polls right now\n"
     i = 0
     for poll in polls:
-        s += i + ": " polls[i].embeds[0].title + "\n"
+        #s += i + ": " polls[i].embeds[0].title + "\n"
+        print(str(poll)
         i++
     await ctx.send(s)
 
