@@ -53,7 +53,7 @@ async def add(ctx, arg1, arg2, id = 0):
     if arg2[0] == ':' and arg2[-1] == ':':
         e = arg2[1:-1]
     if arg2[0] == '<' and arg2[-1] == '>':
-        e = arg2.split(':')[1]    
+        e = arg2.split(':')[1]
     ec = ":" + e + ":"
 
     emoji = get(bot.emojis, name=e)
@@ -62,7 +62,7 @@ async def add(ctx, arg1, arg2, id = 0):
 
     print(emoji)
     embed = polls[id].embeds[0]
-    embed.add_field(name=str(emoji), value=arg1, inline=False)
+    embed.add_field(name=str(emoji) + " -- " + arg1, inline=False)
     try:
         await polls[id].add_reaction(emoji)
     except discord.NotFound:
