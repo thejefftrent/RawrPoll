@@ -95,7 +95,8 @@ async def end(ctx, id=0):
 async def _list(ctx):
     s = "There are " + str(len(polls)) + " polls right now\n\ntest"
     for poll in polls:
-        print(str(poll))
+        print(str(poll.embeds))
+        
 
     await ctx.send(s)
 
