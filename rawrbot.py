@@ -1,26 +1,23 @@
 import auth
 import discord
+from discord.ext import commands
+
 
 client = discord.Client();
+command = commands.Bot(command_prefix='+');
 
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
+    await client.change_presence(status=discord.Status.idle, activity=discord.Game("with the API"))
+    await message.channel.send("I'm here!")
 
 @client.event
 async def on_message(message):
-    if message.author != client.user and message.content.startswith('+'):
-        if message.content.startswith('+shutdown'):
-            await message.channel.send("Goodbye!")
-            await client.logout
-        if message.content.startswith('+hello'):
-            await message.channel.send('Hello! {0.name}'.format(message.author))
-        else:
-            command = message.content.split(" ")[0][1:]
-            await message.channel.send("Sorry, " + command + " is not a valid command")
-
-    else:
-        return
+    if message.author != client.user:
+        @command.command()
+        async def hello(ctx):
+            await ctx.send("Hello!")
 
 
 client.run(auth.discordToken)
