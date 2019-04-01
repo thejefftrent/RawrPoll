@@ -43,17 +43,28 @@ async def poll(ctx, arg = "you didn't put in a title you dingus"):
     embed.set_author(name="Poll started by " + ctx.message.author.display_name, icon_url=ctx.message.author.avatar_url)
     embed.set_footer(text="Use (+add 'option' emoji) to add another option and then react to vote.")
     polls.append(await ctx.send(embed=embed))
-    print(polls[len(polls)-1].id)
+    #print(polls[len(polls)-1].id)
 
 @bot.command()
 async def add(ctx, arg1, arg2, id = 0):
-    print(arg1 + " " + arg2)
-    emoji = get(bot.emojis, name=arg2)
+    e = arg2
+    if arg2[0] == ':' and arg2[-1] == ':':
+        e = arg2[1:-1]
+
+    #print(arg1 + " " + arg2)
+    emoji = get(bot.emojis, name=e)
+    if emoji == None:
+        emoji = e
+    ec = ":" + e + ":"
     print(emoji)
     embed = polls[id].embeds[0]
-    embed.add_field(name=emoji, value=arg1, inline=False)
-    await polls[id].add_reaction(emoji)
-    #await polls[id].edit(embed=embed)
+    embed.add_field(name=ec, value=arg1, inline=False)
+    try:
+        await polls[id].add_reaction(emoji)
+    except discord.ext.commands.errors.CommandInvokeError:
+        await ctx.send("An error occured. Likely the emoji does not exist or I don't have access to it.")
+        return
+    await polls[id].edit(embed=embed)
 
 @bot.command()
 async def end(ctx):
