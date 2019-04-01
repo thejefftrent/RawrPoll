@@ -52,12 +52,14 @@ async def add(ctx, arg1, arg2, id = 0):
     e = arg2
     if arg2[0] == ':' and arg2[-1] == ':':
         e = arg2[1:-1]
+
     ec = ":" + e + ":"
 
     emoji = get(bot.emojis, name=e)
     if emoji == None:
         emoji = e
-
+    if arg2[0] == '<' and arg2[-1] == '>':
+        emoji = arg2
     print(emoji)
     embed = polls[id].embeds[0]
     embed.add_field(name=str(emoji), value=arg1, inline=False)
