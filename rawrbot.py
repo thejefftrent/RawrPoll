@@ -9,7 +9,7 @@ async def on_ready():
 
 @client.event
 async def on_message(message):
-    if message.author != client.user && message.content.startswith('+'):
+    if message.author != client.user and message.content.startswith('+'):
         if message.content.startswith('+shutdown'):
             await message.channel.send("Goodbye!")
             await client.logout
