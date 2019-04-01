@@ -58,7 +58,7 @@ async def add(ctx, arg1, arg2, id = 0):
     ec = ":" + e + ":"
     print(emoji)
     embed = polls[id].embeds[0]
-    embed.add_field(name=ec, value=arg1, inline=False)
+    embed.add_field(name=emoji, value=arg1, inline=False)
     try:
         await polls[id].add_reaction(emoji)
     except discord.ext.commands.errors.CommandInvokeError:
