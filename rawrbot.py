@@ -46,7 +46,7 @@ async def poll(ctx, arg):
 
 @bot.command()
 async def add(ctx, arg1, arg2, id = 0):
-    embed.add_field(name=👍, value=I want to be the very best, inline=False)
+    embed.add_field(name="👍", value="I want to be the very best", inline=False)
     await polls[id].add_reaction('👍')
 
 @bot.command()
