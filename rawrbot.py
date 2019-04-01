@@ -42,8 +42,8 @@ async def poll(ctx, arg):
     print(polls[len(polls)-1].id)
 
 @bot.command()
-async def add(ctx, arg):
-    await polls[0].add_reaction('{crit}')
+async def add(ctx):
+    await polls[0].add_reaction(get(bot.get_all_emojis(), name="crit"))
     pass
 
 @bot.command()
