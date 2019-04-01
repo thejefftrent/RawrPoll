@@ -47,18 +47,19 @@ async def poll(ctx, arg = "you didn't put in a title you dingus"):
 
 @bot.command()
 async def add(ctx, arg1, arg2, id = 0):
+    # Some sanitization
     e = arg2
     if arg2[0] == ':' and arg2[-1] == ':':
         e = arg2[1:-1]
+    ec = ":" + e + ":"
 
-    #print(arg1 + " " + arg2)
     emoji = get(bot.emojis, name=e)
     if emoji == None:
         emoji = e
-    ec = ":" + e + ":"
-    print(emoji.str)
+
+    print()
     embed = polls[id].embeds[0]
-    embed.add_field(name=emoji.str, value=arg1, inline=False)
+    embed.add_field(name=str(emoji), value=arg1, inline=False)
     try:
         await polls[id].add_reaction(emoji)
     except discord.ext.commands.errors.CommandInvokeError:
