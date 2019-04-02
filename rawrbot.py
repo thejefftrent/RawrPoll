@@ -28,7 +28,7 @@ async def on_reaction_add(reaction, user):
     if reaction.message.author.bot:
         print("Someone reacted to a bot")
         for poll in polls:
-            if poll is reaction.message:
+            if poll.id == reaction.message.id:
                 print("Someone reacted with one of my polls!")
                 #TODO check to see the pass limit is met
 
@@ -83,7 +83,8 @@ async def add(ctx, arg1, arg2, id = 0):
 
 @bot.command()
 async def end(ctx, id=0):
-    pass
+    print("removing " + str(polls[id]))
+    polls.remove(polls[id])
     #Check to see which has the most reactions
 
     # winner = polls[id].reactions[0]
