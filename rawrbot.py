@@ -86,6 +86,7 @@ async def add(ctx, arg1, arg2, id = 0):
 
 @bot.command()
 async def end(ctx, id=0):
+    print(str(id) + " " + str(len(polls)))
     if id < len(polls):
         print("removing " + str(polls[id]))
         polls.remove(polls[id])
