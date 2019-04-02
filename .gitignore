@@ -105,3 +105,4 @@ venv.bak/
 
 # hidden discord stuff
 auth.py
+.vscode/

@@ -23,22 +23,28 @@ async def on_message(message):
     if not message.author.bot:
         await bot.process_commands(message)
 
-
+@bot.event
+async def on_reaction_add(reaction, user):
+    if reaction.message.bot:
+        for poll in polls:
+            if poll is reaction.message:
+                print("Someone reacted with one of my polls!")
+                #TODO check to see the pass limit is met
 
 ############
 # COMMANDS #
 ############
 
-@bot.command()
-async def test(ctx):
-    await ctx.send("Hello!")
+# @bot.command()
+# async def test(ctx):
+#     await ctx.send("Hello!")
 
 @bot.command()
 async def ping(ctx):
     await ctx.send("PONG! " + str(bot.latency*1000)[:6] + "ms")
 
 @bot.command()
-async def poll(ctx, arg = "you didn't put in a title you dingus"):
+async def poll(ctx, arg = "untitled"):
     embed=discord.Embed(title=arg, color=0xff8040)
     embed.set_author(name="Poll started by " + ctx.message.author.display_name, icon_url=ctx.message.author.avatar_url)
     embed.set_footer(text="Use (+add 'option' emoji "+ str(len(polls)) +") to add another option and then react to vote.")
@@ -76,20 +82,22 @@ async def add(ctx, arg1, arg2, id = 0):
 
 @bot.command()
 async def end(ctx, id=0):
-    winner = polls[id].reactions[0]
-    winners = list()
-    for reaction in polls[id].reactions:
-        if reaction.count > winner.reaction.count:
-            winner = reaction
-    for reaction in polls[id].reactions:
-        if reaction.count >= winner.count:
-            winners.append(reaction)
-    if len(winners) > 0:
-        pass
-    else:
-        await ctx.send(str(reaction.emoji) + " is the winner!")
+    pass
+    #Check to see which has the most reactions
 
-    polls.remove(polls[id])
+    # winner = polls[id].reactions[0]
+    # winners = list()
+    # for reaction in polls[id].reactions:
+    #     if reaction.count > winner.reaction.count:
+    #         winner = reaction
+    # for reaction in polls[id].reactions:
+    #     if reaction.count >= winner.count:
+    #         winners.append(reaction)
+    # if len(winners) > 0:
+    #     pass
+    # else:
+    #     await ctx.send(str(reaction.emoji) + " is the winner!")
+    # polls.remove(polls[id])
 
 @bot.command(name="list")
 async def _list(ctx):
@@ -101,6 +109,15 @@ async def _list(ctx):
         i += 1
     await ctx.send(s)
 
+#TODO extend the duration of the poll
+@bot.command()
+async def extend(ctx, id=0):
+    pass
+
+#TODO set a limit for the amount of votes needed for an option to pass
+@bot.command()
+async def pass(ctx, id=0):
+    pass
 ###########################
 ### LETS RUN THIS THING ###
 ###########################
