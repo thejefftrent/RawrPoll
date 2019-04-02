@@ -43,7 +43,7 @@ async def on_reaction_add(reaction, user):
 @bot.command()
 async def ping(ctx):
     await ctx.send("PONG! " + str(bot.latency*1000)[:6] + "ms")
-    await ctx.message.delete()
+    await bot.delete_messages(ctx.message)
 
 @bot.command()
 async def poll(ctx, arg = "untitled"):
@@ -51,7 +51,7 @@ async def poll(ctx, arg = "untitled"):
     embed.set_author(name="Poll started by " + ctx.message.author.display_name, icon_url=ctx.message.author.avatar_url)
     embed.set_footer(text="Use (+add 'option' emoji "+ str(len(polls)) +") to add another option and then react to vote.")
     polls.append(await ctx.send(embed=embed))
-    await ctx.message.delete()
+    await bot.delete_messages(ctx.message)
     #print(polls[len(polls)-1].id)
 
 
@@ -82,17 +82,17 @@ async def add(ctx, arg1, arg2, id = 0):
         await ctx.send("An error occured when I tried adding a reaction. The emoji should NOT be in plain text")
         return
     await polls[id].edit(embed=embed)
-    await ctx.message.delete()
+    await bot.delete_messages(ctx.message)
 
 @bot.command()
 async def end(ctx, id=0):
-    print(str(id) + " " + str(len(polls)))
+    #print(str(id) + " " + str(len(polls)))
     if id < len(polls):
-        print("removing " + str(polls[id]))
+        #print("removing " + str(polls[id]))
         polls.remove(polls[id])
     else:
         await ctx.send("No polls exist or the poll id is too large.")
-    await ctx.message.delete()
+    await bot.delete_messages(ctx.message)
     #Check to see which has the most reactions
 
     # winner = polls[id].reactions[0]
