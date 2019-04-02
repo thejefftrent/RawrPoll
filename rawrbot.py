@@ -115,8 +115,8 @@ async def extend(ctx, id=0):
     pass
 
 #TODO set a limit for the amount of votes needed for an option to pass
-@bot.command()
-async def pass(ctx, id=0):
+@bot.command(name="pass")
+async def _pass(ctx, id=0):
     pass
 ###########################
 ### LETS RUN THIS THING ###
