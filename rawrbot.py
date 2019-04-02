@@ -26,6 +26,7 @@ async def on_message(message):
 @bot.event
 async def on_reaction_add(reaction, user):
     if reaction.message.author.bot:
+        print("Someone reacted to a bot")
         for poll in polls:
             if poll is reaction.message:
                 print("Someone reacted with one of my polls!")
@@ -106,7 +107,7 @@ async def _list(ctx):
     for poll in polls:
         print(str(poll.embeds[0].title))
         s += str(i) + "—" + str(poll.embeds[0].title) + "\n"
-        s += poll.jump_url + "\n\n"
+        s += poll.jump_url + "\n"
         i += 1
     await ctx.send(s)
 
